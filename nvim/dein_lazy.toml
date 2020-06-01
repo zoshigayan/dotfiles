@@ -1,0 +1,35 @@
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+on_event = 'InsertEnter'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+# TypeScript
+
+[[plugins]]
+repo = 'peitalin/vim-jsx-typescript'
+on_ft = ['typescript', 'typescriptreact']
+hook_add = '''
+nnoremap <silent> <leader>td :TSDoc<CR>
+'''
+
+[[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+on_ft = ['typescript', 'typescriptreact']
+
+[[plugins]]
+repo = 'mhartington/nvim-typescript'
+build = './install'
+on_ft = ['typescript', 'typescriptreact']
+
+# JavaScript
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'gutenye/json5.vim'
+on_if = 'expand("%") == "tsconfig.json"'
