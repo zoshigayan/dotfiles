@@ -46,6 +46,10 @@ set nobackup
 set noswapfile
 set noundofile
 
+set background=dark
+colorscheme PaperColor
+let g:airline_theme = 'papercolor'
+
 " clipboard
 set clipboard^=unnamedplus
 let g:clpboard = {
@@ -64,6 +68,7 @@ let g:clpboard = {
 " map
 inoremap <C-j> <ESC>
 vnoremap <C-j> <ESC>
+
 nnoremap <silent> <Leader>wk <C-w>k
 nnoremap <silent> <Leader>wl <C-w>l
 nnoremap <silent> <Leader>wj <C-w>j

@@ -1,21 +1,5 @@
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-" call deoplete#custom#option('auto_complete_delay', 0)
-" call deoplete#custom#option('ignore_case', v:true)
-" call deoplete#custom#option('sources', {
-" \ '_': ['ale'],
-" \})
-
-let g:deoplete#enable_at_startup = 1
-'''
-
-[[plugins]]
-repo = 'morhetz/gruvbox'
-hook_add = '''
-colorscheme gruvbox
-let g:gruvbox_contrast_dark = 'hard'
-'''
+repo = 'NLKNguyen/papercolor-theme'
 
 [[plugins]]
 repo = 'Shougo/dein.vim'
@@ -57,7 +41,7 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add = '''
-nnoremap <silent> <Leader>e :Defx -toggle -winwidth=50 -split=vertical -direction=topleft -ignored-files=node_modules,\.git<CR>
+nnoremap <silent> <Leader>e :Defx -toggle -winwidth=50 -split=vertical -direction=topleft -ignored-files=node_modules,.git,vendor<CR>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> l
@@ -98,6 +82,7 @@ repo = 'tpope/vim-surround'
 repo = 'dense-analysis/ale'
 hook_add = '''
 let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
 let g:ale_linters = {
 \  'typescript': ['eslint', 'tsserver', 'typecheck'],
 \  'typescriptreact': ['eslint', 'tsserver', 'typecheck'],
@@ -112,13 +97,17 @@ let g:ale_fixers = {
 \   'python': ['autopep8'],
 \   'go': ['gofmt']
 \   }
+
+nnoremap <silent> <Leader>ad :ALEDetail<CR>
+nnoremap <silent> <Leader>ai :ALEInfo<CR>
 '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-hook_add = '''
-let g:airline_theme = 'gruvbox'
-'''
+depends = ['vim-airline-themes']
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -139,11 +128,11 @@ function! TerminalNew()
   Tnew
 endfunction
 nnoremap <silent> <Leader>tn :call TerminalNew()<CR>
-nnoremap <Leader>tt :Ttoggle<CR>
+nnoremap <silent> <Leader>tt :Ttoggle<CR>
 
 " jump
-nnoremap <Leader>tl :Tnext<CR>
-nnoremap <Leader>th :Tprevious<CR>
+nnoremap <silent> <Leader>tl :Tnext<CR>
+nnoremap <silent> <Leader>th :Tprevious<CR>
 
 " インサートモードぬけるやつ
 tnoremap <C-j> <C-\><C-n>

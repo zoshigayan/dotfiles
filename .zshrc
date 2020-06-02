@@ -9,9 +9,7 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 
 NEWLINE=$'\n'
-PROMPT="${NEWLINE}%~${NEWLINE}( '_') < "
-RPROMPT=\$vcs_info_msg_0_
-
+PROMPT="${NEWLINE}%K{13} %F{0}%~%f %k${NEWLINE}%F{4}( '_') < %f"
 
 setopt histignorealldups sharehistory
 
@@ -32,7 +30,7 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+# eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -58,9 +56,16 @@ export PATH="$HOME/local/nvim/bin:$PATH"
 setopt equals
 
 # aliases
-alias ll='ls -lah --color=auto'
+case ${OSTYPE} in
+  darwin*)
+    alias ll='ls -lahG'
+    ;;
+  linux*)
+    alias ll='ls -lah --color=auto'
+    ;;
+esac
 alias rl='exec $SHELL -l'
-alias g='cd $(ghq root)/$(ghq list | fzf)'
+alias g='cd $(ghq root)/$(ghq list | peco)'
 
 # anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
@@ -69,6 +74,3 @@ eval "$(anyenv init -)"
 # golang
 export PATH="/usr/local/go/bin:$PATH"
 export GOPATH="$HOME/.go"
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
