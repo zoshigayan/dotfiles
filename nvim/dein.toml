@@ -5,6 +5,19 @@ repo = 'NLKNguyen/papercolor-theme'
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('camel_case', v:true)
+call deoplete#custom#option('sources', {
+      \ '_': ['ale'],
+      \ })
+call deoplete#custom#option({
+      \ 'auto_complete_popup': 'manual',
+      \ })
+'''
+
+[[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
 nnoremap <silent> <leader>,p :Denite -smartcase -split=floating -expand file/rec/git<CR>
