@@ -45,6 +45,7 @@ set smarttab
 set nobackup
 set noswapfile
 set noundofile
+set updatetime=100
 
 set background=dark
 colorscheme PaperColor
@@ -66,8 +67,8 @@ let g:clpboard = {
       \ }
 
 " map
-inoremap <C-j> <ESC>
-vnoremap <C-j> <ESC>
+inoremap <silent> <C-j> <ESC>
+vnoremap <silent> <C-j> <ESC>
 
 nnoremap <silent> <Leader>wk <C-w>k
 nnoremap <silent> <Leader>wl <C-w>l
@@ -107,3 +108,6 @@ if !exists("*ConfigLeave")
   endfunction
   nnoremap <silent> <leader>cl :call ConfigLeave()<CR>
 endif
+
+" vimgrepでQuickfixひらくやつ
+autocmd QuickFixCmdPost *grep* cwindow
