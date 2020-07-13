@@ -1,0 +1,13 @@
+[user]
+	name = zoshigayan
+	email = hello@zoshigayan.net
+[commit]
+	template = ~/.gitmessage.txt
+[alias]
+    s = status
+    lo = log --oneline
+    co = checkout
+    cb = checkout -b
+    cm = checkout master
+    copr = !sh -c 'git fetch upstream pull/$1/head:pr/$1 && git checkout pr/$1' -
+    po = push origin HEAD
