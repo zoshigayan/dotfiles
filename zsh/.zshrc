@@ -8,8 +8,14 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 
+# PROMPT
 NEWLINE=$'\n'
 PROMPT="${NEWLINE}%K{13} %F{0}%~%f %k${NEWLINE}%F{4}( '_') < %f"
+
+# RPROMPT (Git)
+# source $(cd $(dirname $0); pwd)/zsh-git-prompt/zshrc.sh
+source $HOME/dotfiles/zsh/zsh-git-prompt/zshrc.sh
+RPROMPT='$(git_super_status)'
 
 setopt histignorealldups sharehistory
 
