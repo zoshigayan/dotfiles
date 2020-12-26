@@ -1,35 +1,48 @@
 # Set up the prompt
-
 autoload -Uz promptinit
 promptinit
 
+# Use modern completion system
+autoload -Uz compinit
+compinit
+
+# Use VCS Info
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 
+# plugins
+source $HOME/.zplug/init.zsh
+
+# RPROMPT (Git)
+zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
+
 # PROMPT
 NEWLINE=$'\n'
 PROMPT="${NEWLINE}%K{13} %F{0}%~%f %k${NEWLINE}%F{4}( '_') < %f"
-
-# RPROMPT (Git)
-# source $(cd $(dirname $0); pwd)/zsh-git-prompt/zshrc.sh
-source $HOME/dotfiles/zsh/zsh-git-prompt/zshrc.sh
 RPROMPT='$(git_super_status)'
 
 setopt histignorealldups sharehistory
 
-# Use emacs keybindings even if our EDITOR is set to vi
+# Use vim keybindings
 bindkey -v
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
-
-# Use modern completion system
-autoload -Uz compinit
-compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
