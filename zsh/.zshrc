@@ -15,6 +15,8 @@ setopt prompt_subst
 # plugins
 source $HOME/.zplug/init.zsh
 
+# manage zplug itself like other plugins
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
 # RPROMPT (Git)
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh
 
