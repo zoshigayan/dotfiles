@@ -1,5 +1,16 @@
 ## 環境構築
 
-1. ホームディレクトリ直下に `.zshrc` へのシンボリックリンクをはる
-1. `$HOME/.config` 直下に `nvim` ディレクトリへのシンボリックリンクをはる
-1. DONE
+```shell
+# クローンする
+git clone git@github.com:zoshigayan/dotfiles.git ~/dotfiles
+
+# zsh の設定パスを指定する
+touch ~/.zshenv
+echo "export ZDOTDIR=${HOME}/dotfiles/zsh" >> ~/.zshenv
+
+# nvim の設定をシンボリックリンク化する
+ln -s ~/dotfiles/nvim ~/.config
+
+# asdf の設定をシンボリックリンク化する
+ln -s ~/dotfiles/.tool-versions ~
+```
