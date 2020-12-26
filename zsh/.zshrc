@@ -26,6 +26,7 @@ zplug "asdf-vm/asdf", \
   rename-to:asdf, \
   use:asdf.sh, \
   hook-load:". $ZPLUG_HOME/repos/asdf-vm/asdf/asdf.sh"
+export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then

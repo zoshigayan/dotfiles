@@ -12,5 +12,5 @@ echo "export ZDOTDIR=${HOME}/dotfiles/zsh" >> ~/.zshenv
 ln -s ~/dotfiles/nvim ~/.config
 
 # asdf の設定をシンボリックリンク化する
-ln -s ~/dotfiles/.tool-versions ~
+ln -s ~/dotfiles/asdf/.tool-versions ~
 ```
