@@ -17,8 +17,10 @@ source $HOME/.zplug/init.zsh
 
 # manage zplug itself like other plugins
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
+
 # RPROMPT (Git)
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh
+
 # asdf
 zplug "asdf-vm/asdf", \
   from:github, \
@@ -27,6 +29,12 @@ zplug "asdf-vm/asdf", \
   use:asdf.sh, \
   hook-load:". $ZPLUG_HOME/repos/asdf-vm/asdf/asdf.sh"
 export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
+
+# fzf
+zplug "junegunn/fzf", \
+  from:gh-r, \
+  as:command, \
+  rename-to:fzf
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -94,7 +102,7 @@ case ${OSTYPE} in
     ;;
 esac
 alias rl='exec $SHELL -l'
-alias g='cd $(ghq root)/$(ghq list | peco)'
+alias g='cd $(ghq root)/$(ghq list | fzf)'
 
 # golang
 export PATH="/usr/local/go/bin:$PATH"
