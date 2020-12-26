@@ -19,6 +19,13 @@ source $HOME/.zplug/init.zsh
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 # RPROMPT (Git)
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh
+# asdf
+zplug "asdf-vm/asdf", \
+  from:github, \
+  as:command, \
+  rename-to:asdf, \
+  use:asdf.sh, \
+  hook-load:". $ZPLUG_HOME/repos/asdf-vm/asdf/asdf.sh"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -87,10 +94,6 @@ case ${OSTYPE} in
 esac
 alias rl='exec $SHELL -l'
 alias g='cd $(ghq root)/$(ghq list | peco)'
-
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
 
 # golang
 export PATH="/usr/local/go/bin:$PATH"
