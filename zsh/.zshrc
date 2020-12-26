@@ -52,8 +52,6 @@ NEWLINE=$'\n'
 PROMPT="${NEWLINE}%K{13} %F{0}%~%f %k${NEWLINE}%F{4}( '_') < %f"
 RPROMPT='$(git_super_status)'
 
-setopt histignorealldups sharehistory
-
 # Use vim keybindings
 bindkey -v
 
@@ -61,6 +59,28 @@ bindkey -v
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
+
+setopt HIST_NO_STORE
+setopt HIST_IGNORE_DUPS
+setopt EXTENDED_HISTORY
+setopt HIST_REDUCE_BLANKS
+setopt SHAREHISTORY
+
+incremental_search_history() {
+  selected=`history -E 1 | fzf | cut -b 26-`
+  BUFFER=`[ ${#selected} -gt 0 ] && echo $selected || echo $BUFFER`
+  CURSOR=${#BUFFER}
+  zle redisplay
+}
+zle -N incremental_search_history
+bindkey "^R" incremental_search_history
+
+kill_buffer() {
+  BUFFER=""
+  zle redisplay
+}
+zle -N kill_buffer
+bindkey "^U" kill_buffer
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
