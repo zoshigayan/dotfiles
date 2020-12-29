@@ -98,6 +98,19 @@ kill_buffer() {
 zle -N kill_buffer
 bindkey "^U" kill_buffer
 
+move_ghq_directories() {
+  selected=`ghq list | fzf`
+  if [ ${#selected} -gt 0 ]
+  then
+    target_dir="`ghq root`/$selected"
+    echo "cd $target_dir"
+    cd $target_dir
+    zle accept-line
+  fi
+}
+zle -N move_ghq_directories
+bindkey "^]" move_ghq_directories
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -138,7 +151,6 @@ case ${OSTYPE} in
     ;;
 esac
 alias rl='exec $SHELL -l'
-alias g='cd $(ghq root)/$(ghq list | fzf)'
 
 # golang
 export PATH="/usr/local/go/bin:$PATH"
