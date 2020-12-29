@@ -111,3 +111,9 @@ endif
 
 " vimgrepでQuickfixひらくやつ
 autocmd QuickFixCmdPost *grep* cwindow
+
+" :grep で ripgrep つかうやつ
+if executable("rg")
+    let &grepprg = 'rg --vimgrep --hidden > /dev/null'
+    set grepformat=%f:%l:%c:%m
+endif
