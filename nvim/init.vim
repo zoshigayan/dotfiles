@@ -3,8 +3,8 @@ if &compatible
 endif
 
 " vim-plug なかったら落としてくる
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+if empty(glob('$HOME/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -14,7 +14,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('$HOME/.local/share/nvim/plugged')
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'lambdalisue/fern.vim'
 Plug 'tpope/vim-surround'
