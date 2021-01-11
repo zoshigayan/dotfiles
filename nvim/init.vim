@@ -23,7 +23,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'easymotion/vim-easymotion', { 'on': 'InsertEnter' }
+Plug 'easymotion/vim-easymotion'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
