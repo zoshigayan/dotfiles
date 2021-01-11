@@ -2,29 +2,38 @@ if &compatible
   set nocompatible
 endif
 
-let mapleader = "\<Space>"
-
-" deinの実行パス
-set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
-
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
-  call dein#load_toml('~/.config/nvim/dein.toml')
-  call dein#load_toml('~/.config/nvim/dein_lazy.toml', {'lazy': 1})
-  call dein#end()
-  call dein#save_state()
+" vim-plug なかったら落としてくる
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-filetype plugin indent on
-syntax enable
+" 足りないプラグインがあれば :PlugInstall を実行
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
-if dein#check_install()
-  call dein#install()
-endif
-
-autocmd VimEnter * call dein#call_hook('post_source')
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'Shougo/defx.nvim'
+Plug 'tpope/vim-surround'
+Plug 'dense-analysis/ale'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'easymotion/vim-easymotion', { 'on': 'InsertEnter' }
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact'] }
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
+Plug 'mhartington/nvim-typescript', { 'for': ['typescript', 'typescriptreact'] }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+call plug#end()
 
 " setting
+filetype plugin indent on
+syntax enable
 set history=200
 set ruler
 set number
@@ -46,6 +55,7 @@ set nobackup
 set noswapfile
 set noundofile
 set updatetime=100
+let mapleader = "\<Space>"
 
 set background=dark
 colorscheme PaperColor
@@ -117,3 +127,27 @@ if executable("rg")
     let &grepprg = 'rg --vimgrep --hidden > /dev/null'
     set grepformat=%f:%l:%c:%m
 endif
+
+" ale
+let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+let g:ale_linters = {
+\  'typescript': ['eslint', 'tsserver', 'typecheck'],
+\  'typescriptreact': ['eslint', 'tsserver', 'typecheck'],
+\  'javascript': ['eslint', 'tsserver', 'typecheck'],
+\  'python': ['pycodestyle'],
+\  'ruby': ['rubocop'],
+\ }
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'typescript': ['eslint'],
+\   'typescriptreact': ['eslint'],
+\   'javascript': ['eslint'],
+\   'python': ['autopep8'],
+\   'go': ['gofmt'],
+\   'ruby': [],
+\   }
+
+nnoremap <silent> <Leader>ad :ALEDetail<CR>
+nnoremap <silent> <Leader>ai :ALEInfo<CR>
+
