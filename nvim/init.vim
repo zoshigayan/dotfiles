@@ -16,7 +16,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'Shougo/defx.nvim'
+Plug 'lambdalisue/fern.vim'
 Plug 'tpope/vim-surround'
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
@@ -151,3 +151,5 @@ let g:ale_fixers = {
 nnoremap <silent> <Leader>ad :ALEDetail<CR>
 nnoremap <silent> <Leader>ai :ALEInfo<CR>
 
+" fern
+nnoremap <silent> <Leader>e :Fern . -drawer -width=40 -toggle<CR>
