@@ -32,9 +32,11 @@ export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
 
 # fzf
 zplug "junegunn/fzf", \
-  from:gh-r, \
+  from:github, \
   as:command, \
-  rename-to:fzf
+  rename-to:fzf, \
+  use:bin/fzf, \
+  hook-build:". $ZPLUG_HOME/repos/junegunn/fzf/install --bin"
 
 # ripgrep
 zplug "BurntSushi/ripgrep", \
