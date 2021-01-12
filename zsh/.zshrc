@@ -29,6 +29,7 @@ zplug "asdf-vm/asdf", \
   use:asdf.sh, \
   hook-load:". $ZPLUG_HOME/repos/asdf-vm/asdf/asdf.sh"
 export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
+export ASDF_NPM_DEFAULT_PACKAGES_FILE=$HOME/dotfiles/asdf/.default-npm-packages
 
 # fzf
 zplug "junegunn/fzf", \
