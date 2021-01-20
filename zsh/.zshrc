@@ -45,6 +45,12 @@ zplug "BurntSushi/ripgrep", \
   as:command, \
   rename-to:rg
 
+# bat
+zplug "sharkdp/bat", \
+  from:gh-r, \
+  as:command, \
+  rename-to:bat
+
 # interactive ripgrep
 fzgrep() {
   INITIAL_QUERY=""
@@ -52,7 +58,7 @@ fzgrep() {
   FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY'" \
     fzf --bind "change:reload:$RG_PREFIX {q} || true" \
         --ansi --phony --query "$INITIAL_QUERY" \
-        --preview 'cat `echo {} | cut -f 1 --delim ":"`'
+        --preview 'bat --style=numbers --color=always --line-range :500 `echo {} | cut -f 1 -d ":"`'
 }
 
 # Install plugins if there are plugins that have not been installed
