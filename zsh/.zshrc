@@ -91,14 +91,14 @@ setopt EXTENDED_HISTORY
 setopt HIST_REDUCE_BLANKS
 setopt SHAREHISTORY
 
-incremental_search_history() {
-  selected=`history -E 1 | fzf | cut -b 25-`
+fuzzy_search_history() {
+  selected=`history 1 | fzf | sed -E 's/^\ *[0-9]+\ *//'`
   BUFFER=`[ ${#selected} -gt 0 ] && echo $selected || echo $BUFFER`
   CURSOR=${#BUFFER}
   zle redisplay
 }
-zle -N incremental_search_history
-bindkey "^R" incremental_search_history
+zle -N fuzzy_search_history
+bindkey "^R" fuzzy_search_history
 
 kill_buffer() {
   BUFFER=""
