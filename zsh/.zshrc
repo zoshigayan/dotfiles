@@ -92,7 +92,7 @@ setopt HIST_REDUCE_BLANKS
 setopt SHAREHISTORY
 
 incremental_search_history() {
-  selected=`history -E 1 | fzf | cut -b 26-`
+  selected=`history -E 1 | fzf | cut -b 25-`
   BUFFER=`[ ${#selected} -gt 0 ] && echo $selected || echo $BUFFER`
   CURSOR=${#BUFFER}
   zle redisplay
