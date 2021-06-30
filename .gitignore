@@ -1,4 +1,5 @@
 .netrwhist
 .zcompdump
 .zcompcache
+zsh/.zsh_history
 nvim/site
