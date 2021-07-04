@@ -25,6 +25,7 @@ Plug '~/.zplug/repos/junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'easymotion/vim-easymotion'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact'] }
@@ -152,6 +153,14 @@ let g:ale_fixers = {
 
 nnoremap <silent> <Leader>ad :ALEDetail<CR>
 nnoremap <silent> <Leader>ai :ALEInfo<CR>
+
+
+" fugitive
+nnoremap <silent> <Leader>gs :GStatus<CR>
+nnoremap <silent> <Leader>glo :GBrowse!<CR>
+vnoremap <silent> <Leader>glo :GBrowse!<CR>
+nnoremap <silent> <Leader>glu :GBrowse! @upstream<CR>
+vnoremap <silent> <Leader>glu :GBrowse! @upstream<CR>
 
 " fern
 nnoremap <silent> <Leader>e :Fern . -drawer -width=40 -toggle<CR>
