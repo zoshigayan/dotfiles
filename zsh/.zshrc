@@ -31,6 +31,13 @@ zplug "asdf-vm/asdf", \
 export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
 export ASDF_NPM_DEFAULT_PACKAGES_FILE=$HOME/dotfiles/asdf/.default-npm-packages
 
+# ghq
+zplug "x-motemen/ghq", \
+  from:github, \
+  as:command, \
+  rename-to:ghq, \
+  hook-build:"make install"
+
 # fzf
 zplug "junegunn/fzf", \
   from:github, \
