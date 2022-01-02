@@ -7,56 +7,19 @@ autoload -Uz compinit
 compinit
 
 # Use VCS Info
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
+function git_branch() {
+    echo -n "[$(git name-rev --name-only HEAD 2> /dev/null)]"
+}
 setopt prompt_subst
 
-# plugins
-source $HOME/.zplug/init.zsh
-
-# manage zplug itself like other plugins
-zplug "zplug/zplug", hook-build:"zplug --self-manage"
-
-# RPROMPT (Git)
-zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh
+# PROMPT
+NEWLINE=$'\n'
+PROMPT="${NEWLINE}%K{13} %F{0}%~%f %k${NEWLINE}%F{4}( '_') < %f"
+RPROMPT='$(git_branch)'
 
 # asdf
-zplug "asdf-vm/asdf", \
-  from:github, \
-  as:command, \
-  rename-to:asdf, \
-  use:asdf.sh, \
-  hook-load:". $ZPLUG_HOME/repos/asdf-vm/asdf/asdf.sh"
 export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
 export ASDF_NPM_DEFAULT_PACKAGES_FILE=$HOME/dotfiles/asdf/.default-npm-packages
-
-# ghq
-zplug "x-motemen/ghq", \
-  from:github, \
-  as:command, \
-  rename-to:ghq, \
-  hook-build:"make install"
-
-# fzf
-zplug "junegunn/fzf", \
-  from:github, \
-  as:command, \
-  rename-to:fzf, \
-  use:bin/fzf, \
-  hook-build:". $ZPLUG_HOME/repos/junegunn/fzf/install --bin"
-
-# ripgrep
-zplug "BurntSushi/ripgrep", \
-  from:gh-r, \
-  as:command, \
-  rename-to:rg
-
-# bat
-zplug "sharkdp/bat", \
-  from:gh-r, \
-  as:command, \
-  rename-to:bat
 
 # interactive ripgrep
 fzgrep() {
@@ -67,22 +30,6 @@ fzgrep() {
         --ansi --phony --query "$INITIAL_QUERY" \
         --preview 'bat --style=numbers --color=always --line-range :500 `echo {} | cut -f 1 -d ":"`'
 }
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
-
-# PROMPT
-NEWLINE=$'\n'
-PROMPT="${NEWLINE}%K{13} %F{0}%~%f %k${NEWLINE}%F{4}( '_') < %f"
-RPROMPT='$(git_super_status)'
 
 # Use vim keybindings
 bindkey -v
@@ -167,6 +114,7 @@ case ${OSTYPE} in
     ;;
 esac
 alias rl='exec $SHELL -l'
+alias paths='echo $PATH | sed -e "s/:/\n/g"'
 
 # golang
 export PATH="/usr/local/go/bin:$PATH"
