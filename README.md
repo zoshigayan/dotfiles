@@ -28,10 +28,10 @@ ln -s ~/dotfiles/asdf/.tool-versions ~
 ## インストールしておくもの
 
 * 全環境共通
-  * [asdf](asdf-vm/asdf)
-  * [ghq](x-motemen/ghq)
-  * [fzf](junegunn/fzf)
-  * [ripgrep](BurntSushi/ripgrep)
-  * [bat](sharkdp/bat)
+  * [asdf](https://github.com/asdf-vm/asdf)
+  * [ghq](https://github.com/x-motemen/ghq)
+  * [fzf](https://github.com/junegunn/fzf)
+  * [ripgrep](https://github.com/BurntSushi/ripgrep)
+  * [bat](https://github.com/sharkdp/bat)
 * WSL環境のみ
   * [win32yank](https://github.com/equalsraf/win32yank)
