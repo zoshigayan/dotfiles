@@ -156,7 +156,7 @@ nnoremap <silent> <Leader>ai :ALEInfo<CR>
 
 
 " fugitive
-nnoremap <silent> <Leader>gs :GStatus<CR>
+nnoremap <silent> <Leader>gg :Git<CR>
 nnoremap <silent> <Leader>glo :GBrowse!<CR>
 vnoremap <silent> <Leader>glo :GBrowse!<CR>
 nnoremap <silent> <Leader>glu :GBrowse! @upstream<CR>
