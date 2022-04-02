@@ -21,14 +21,14 @@ Plug 'tpope/vim-surround'
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug '~/.zplug/repos/junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'easymotion/vim-easymotion'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact'] }
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'mhartington/nvim-typescript', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }

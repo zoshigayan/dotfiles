@@ -18,6 +18,7 @@ PROMPT="${NEWLINE}%K{13} %F{0}%~%f %k${NEWLINE}%F{4}( '_') < %f"
 RPROMPT='$(git_branch)'
 
 # asdf
+. $HOME/.asdf/asdf.sh
 export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
 export ASDF_NPM_DEFAULT_PACKAGES_FILE=$HOME/dotfiles/asdf/.default-npm-packages
 
