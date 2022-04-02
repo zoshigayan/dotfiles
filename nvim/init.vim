@@ -28,9 +28,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'easymotion/vim-easymotion'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
-Plug 'mhartington/nvim-typescript', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 call plug#end()
 
