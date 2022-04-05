@@ -165,9 +165,6 @@ vnoremap <silent> <Leader>glu :GBrowse! @upstream<CR>
 " fern
 nnoremap <silent> <Leader>e :Fern . -drawer -width=40 -toggle<CR>
 
-" fzf
-set runtimepath+=~/.zplug/bin/fzf
-
 function! FZGrep(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))

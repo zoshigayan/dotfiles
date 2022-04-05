@@ -18,9 +18,21 @@ PROMPT="${NEWLINE}%K{13} %F{0}%~%f %k${NEWLINE}%F{4}( '_') < %f"
 RPROMPT='$(git_branch)'
 
 # asdf
-. $HOME/.asdf/asdf.sh
+export ASDF_DIR=$HOME/.asdf
 export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
 export ASDF_NPM_DEFAULT_PACKAGES_FILE=$HOME/dotfiles/asdf/.default-npm-packages
+. $HOME/.asdf/asdf.sh
+
+# fzf
+if [[ ! "$PATH" == */Users/yuta.ozaki/.fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
+fi
+
+[[ $- == *i* ]] && source "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+# ------------
+source "/Users/yuta.ozaki/.fzf/shell/key-bindings.zsh"
 
 # interactive ripgrep
 fzgrep() {
