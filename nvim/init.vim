@@ -32,6 +32,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'othree/html5.vim'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 
 " setting
@@ -179,3 +181,8 @@ nnoremap <silent> <Leader>,p :GFiles<CR>
 nnoremap <silent> <Leader>,P :Files<CR>
 nnoremap <silent> <Leader>,s :RG<CR>
 nnoremap <silent> <Leader>,c :Commits<CR>
+
+" svelte
+let g:svelte_indent_script = 0
+let g:svelte_indent_style = 0
+let g:svelte_preprocessors = ['typescript']
