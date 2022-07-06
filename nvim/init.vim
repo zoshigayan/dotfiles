@@ -179,3 +179,15 @@ nnoremap <silent> <Leader>,p :GFiles<CR>
 nnoremap <silent> <Leader>,P :Files<CR>
 nnoremap <silent> <Leader>,s :RG<CR>
 nnoremap <silent> <Leader>,c :Commits<CR>
+
+" coc
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
