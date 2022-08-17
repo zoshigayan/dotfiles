@@ -155,7 +155,7 @@ let g:ale_fixers = {
 \   }
 
 let g:ale_ruby_rubocop_auto_correct_all = 1
-" let g:ale_ruby_rubocop_executable = 'bundle exec rubocop'
+let g:ale_ruby_rubocop_executable = 'bundle'
 
 nnoremap <silent> <Leader>ad :ALEDetail<CR>
 nnoremap <silent> <Leader>ai :ALEInfo<CR>
