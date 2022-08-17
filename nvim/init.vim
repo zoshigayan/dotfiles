@@ -136,12 +136,13 @@ endif
 " ale
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
+let g:ale_disable_lsp = 1
 let g:ale_linters = {
 \  'typescript': ['eslint', 'tsserver', 'typecheck'],
 \  'typescriptreact': ['eslint', 'tsserver', 'typecheck'],
 \  'javascript': ['eslint', 'tsserver', 'typecheck'],
 \  'python': ['pycodestyle'],
-\  'ruby': ['rubocop'],
+\  'ruby': ['solargraph', 'rubocop'],
 \ }
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -150,8 +151,11 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'python': ['autopep8'],
 \   'go': ['gofmt'],
-\   'ruby': [],
+\   'ruby': ['rubocop'],
 \   }
+
+let g:ale_ruby_rubocop_auto_correct_all = 1
+" let g:ale_ruby_rubocop_executable = 'bundle exec rubocop'
 
 nnoremap <silent> <Leader>ad :ALEDetail<CR>
 nnoremap <silent> <Leader>ai :ALEInfo<CR>

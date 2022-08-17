@@ -21,6 +21,7 @@ RPROMPT='$(git_branch)'
 export ASDF_DIR=$HOME/.asdf
 export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
 export ASDF_NPM_DEFAULT_PACKAGES_FILE=$HOME/dotfiles/asdf/.default-npm-packages
+export ASDF_GEM_DEFAULT_PACKAGES_FILE=$HOME/dotfiles/asdf/.default-gems
 . $HOME/.asdf/asdf.sh
 
 # fzf
