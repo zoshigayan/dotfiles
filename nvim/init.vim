@@ -32,6 +32,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'othree/html5.vim'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 
 " setting
@@ -191,3 +193,8 @@ function! s:show_documentation()
     call feedkeys('K', 'in')
   endif
 endfunction
+
+" svelte
+let g:svelte_indent_script = 0
+let g:svelte_indent_style = 0
+let g:svelte_preprocessors = ['typescript']
