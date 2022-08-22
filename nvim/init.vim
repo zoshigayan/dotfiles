@@ -156,6 +156,7 @@ let g:ale_fixers = {
 
 let g:ale_ruby_rubocop_auto_correct_all = 1
 let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ruby_solargraph_executable = 'bundle'
 
 nnoremap <silent> <Leader>ad :ALEDetail<CR>
 nnoremap <silent> <Leader>ai :ALEInfo<CR>
@@ -189,6 +190,10 @@ nnoremap <silent> <Leader>,c :Commits<CR>
 " coc
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 function! s:show_documentation()
   if CocAction('hasProvider', 'hover')
