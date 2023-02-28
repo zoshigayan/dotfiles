@@ -34,6 +34,7 @@ Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'othree/html5.vim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " setting
@@ -155,8 +156,8 @@ let g:ale_fixers = {
 \   }
 
 let g:ale_ruby_rubocop_auto_correct_all = 1
-let g:ale_ruby_rubocop_executable = 'bundle'
-let g:ruby_solargraph_executable = 'bundle'
+let g:ale_ruby_rubocop_executable = '$HOME/.asdf/shims/bundle'
+let g:ruby_solargraph_executable = '$HOME/.asdf/shims/bundle'
 
 nnoremap <silent> <Leader>ad :ALEDetail<CR>
 nnoremap <silent> <Leader>ai :ALEInfo<CR>
