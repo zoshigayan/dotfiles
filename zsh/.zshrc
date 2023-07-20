@@ -14,8 +14,7 @@ setopt prompt_subst
 
 # PROMPT
 NEWLINE=$'\n'
-PROMPT="${NEWLINE}%K{13} %F{0}%~%f %k${NEWLINE}%F{4}( '_') < %f"
-RPROMPT='$(git_branch)'
+PROMPT="${NEWLINE}$ "
 
 # asdf
 export ASDF_DIR=$HOME/.asdf

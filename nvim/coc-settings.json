@@ -1,5 +1,5 @@
 {
   "diagnostic.displayByAle": true,
   "solargraph.useBundler": true,
-  "solargraph.bundlerPath": "$HOME/.asdf/shims/bundle"
+  "solargraph.bundlerPath": "bundle"
 }

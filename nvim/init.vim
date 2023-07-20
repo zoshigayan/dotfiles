@@ -35,6 +35,7 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'othree/html5.vim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'hashivim/vim-terraform'
+Plug 'github/copilot.vim'
 call plug#end()
 
 " setting
@@ -133,15 +134,16 @@ if executable("rg")
     let &grepprg = 'rg --vimgrep --hidden > /dev/null'
     set grepformat=%f:%l:%c:%m
 endif
-
 " ale
+" 'javascript': ['eslint', 'tsserver', 'typecheck'],
+" 'javascript': ['eslint'],
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 let g:ale_disable_lsp = 1
 let g:ale_linters = {
 \  'typescript': ['eslint', 'tsserver', 'typecheck'],
 \  'typescriptreact': ['eslint', 'tsserver', 'typecheck'],
-\  'javascript': ['eslint', 'tsserver', 'typecheck'],
+\  'javascript': [],
 \  'python': ['pycodestyle'],
 \  'ruby': ['solargraph', 'rubocop'],
 \ }
@@ -149,7 +151,7 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'typescript': ['eslint'],
 \   'typescriptreact': ['eslint'],
-\   'javascript': ['eslint'],
+\   'javascript': [],
 \   'python': ['autopep8'],
 \   'go': ['gofmt'],
 \   'ruby': ['rubocop'],

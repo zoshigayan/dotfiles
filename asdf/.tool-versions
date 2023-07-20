@@ -1,5 +1,5 @@
-nodejs 16.14.2
-python 3.9.1
+nodejs 18.16.0
+python 3.9.13 2.7.18
 ruby 3.1.2
 ghq 1.1.7
 golang 1.16.2
