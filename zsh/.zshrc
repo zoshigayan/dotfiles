@@ -44,6 +44,36 @@ fzgrep() {
         --preview 'bat --style=numbers --color=always --line-range :500 `echo {} | cut -f 1 -d ":"`'
 }
 
+// 一括置換
+rp() {
+  if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "USAGE: rp PATTERN REPLACEMENT"
+  else
+    MATCHED_FILES=`rg $1 -l`
+    FILES_COUNT=`echo $MATCHED_FILES | wc -l`
+    if [ -z "$MATCHED_FILES" ]; then
+      echo "No files matched."
+    fi
+
+    echo $MATCHED_FILES
+
+    while :
+    do
+      read "FLAG?$FILES_COUNT file(s) changed (y/n): "
+      if [ "$FLAG" = "y" ]; then
+        echo $MATCHED_FILES | xargs sed -i s/$1/$2/g
+        echo "success🦎"
+        break
+      elif [ "$FLAG" = "n" ]; then
+        echo "canceled"
+        break
+      else
+        echo "enter y or n."
+      fi
+    done
+  fi
+}
+
 # Use vim keybindings
 bindkey -v
 
