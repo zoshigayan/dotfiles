@@ -1,5 +1,9 @@
 {
-  "diagnostic.displayByAle": true,
-  "solargraph.useBundler": true,
-  "solargraph.bundlerPath": "bundle"
+  "solargraph.useBundler": false,
+  "solargraph.bundlerPath": "bundle",
+  "eslint.packageManager": "pnpm",
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": ["typescript", "typescriptreact"],
+  "tsserver.locale": "ja",
+  "typescript.autoClosingTags": false
 }

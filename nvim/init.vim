@@ -18,7 +18,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'lambdalisue/fern.vim'
 Plug 'tpope/vim-surround'
-Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -65,8 +64,9 @@ set updatetime=100
 let mapleader = "\<Space>"
 
 set background=dark
-colorscheme PaperColor
-let g:airline_theme = 'papercolor'
+colorscheme darkblue
+let g:airline_theme = 'dark'
+let g:airline_powerline_fonts = 0
 
 " clipboard
 set clipboard^=unnamedplus
@@ -134,36 +134,6 @@ if executable("rg")
     let &grepprg = 'rg --vimgrep --hidden > /dev/null'
     set grepformat=%f:%l:%c:%m
 endif
-" ale
-" 'javascript': ['eslint', 'tsserver', 'typecheck'],
-" 'javascript': ['eslint'],
-let g:ale_fix_on_save = 1
-let g:ale_sign_column_always = 1
-let g:ale_disable_lsp = 1
-let g:ale_linters = {
-\  'typescript': ['eslint', 'tsserver', 'typecheck'],
-\  'typescriptreact': ['eslint', 'tsserver', 'typecheck'],
-\  'javascript': [],
-\  'python': ['pycodestyle'],
-\  'ruby': ['solargraph', 'rubocop'],
-\ }
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'typescript': ['eslint'],
-\   'typescriptreact': ['eslint'],
-\   'javascript': [],
-\   'python': ['autopep8'],
-\   'go': ['gofmt'],
-\   'ruby': ['rubocop'],
-\   }
-
-let g:ale_ruby_rubocop_auto_correct_all = 1
-let g:ale_ruby_rubocop_executable = '$HOME/.asdf/shims/bundle'
-let g:ruby_solargraph_executable = '$HOME/.asdf/shims/bundle'
-
-nnoremap <silent> <Leader>ad :ALEDetail<CR>
-nnoremap <silent> <Leader>ai :ALEInfo<CR>
-
 
 " fugitive
 nnoremap <silent> <Leader>gg :Git<CR>

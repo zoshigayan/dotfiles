@@ -30,10 +30,6 @@ fi
 
 [[ $- == *i* ]] && source "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
 
-# Key bindings
-# ------------
-source "/Users/yuta.ozaki/.fzf/shell/key-bindings.zsh"
-
 # interactive ripgrep
 fzgrep() {
   INITIAL_QUERY=""
@@ -44,7 +40,7 @@ fzgrep() {
         --preview 'bat --style=numbers --color=always --line-range :500 `echo {} | cut -f 1 -d ":"`'
 }
 
-// 一括置換
+# 一括置換
 rp() {
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "USAGE: rp PATTERN REPLACEMENT"
